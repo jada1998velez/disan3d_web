@@ -1,0 +1,18 @@
+{
+  "id": "llavero-nombre-papa",
+  "name": "Llavero Nombre Para Papá",
+  "tagline": "Su nombre grabado: un regalo que usará a diario.",
+  "description": "Llavero rectangular con el nombre grabado. Un regalo práctico y personal que papá usará a diario y que le recordará a quien se lo regaló.",
+  "price": 6.5,
+  "currency": "EUR",
+  "customizable": true,
+  "bestseller": false,
+  "colors": ["Negro", "Azul", "Gris", "Madera"],
+  "dimensions": "5 × 2,5 × 0,3 cm",
+  "material": "PLA",
+  "printTime": "~35 min",
+  "categories": ["regalos", "personalizados", "papa", "llaveros", "dia-del-padre"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

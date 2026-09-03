@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Producto · DISAN3D</title>
+    <meta content="DISAN3D · Impresión 3D personalizada. Regalos, decoración y objetos únicos, personalizables y fabricados bajo pedido." name="description"/>
+    <meta content="impresion 3d, regalos personalizados, decoracion impresion 3d, personalizados, disan3d, regalo original" name="keywords"/>
+    <meta content="DISAN3D — Impresión 3D personalizada" property="og:title"/>
+    <meta content="DISAN3D · Regalos, decoración y objetos únicos impresos en 3D, personalizables y fabricados bajo pedido." property="og:description"/>
+    <meta content="website" property="og:type"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="DISAN3D — Impresión 3D personalizada" name="twitter:title"/>
+    <meta content="DISAN3D · Regalos, decoración y objetos únicos impresos en 3D, personalizables y fabricados bajo pedido." name="twitter:description"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <link href="style.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer="" src="scripts.js"></script>
+    <script defer="" src="d3-data.js"></script>
+    <script defer="" src="d3-app.js"></script>
+  </head>
+  <body class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden" data-page="product">
+    <div id="site-header"></div>
+    <div id="page-root">
+      <main id="detail-root" class="pt-16 lg:pt-[4.5rem]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
+
+          <div class="lg:grid lg:grid-cols-2 lg:gap-10 xl:gap-14">
+            <!-- Galería -->
+            <div id="detail-gallery" class="lg:sticky lg:top-24 self-start mb-8 lg:mb-0"></div>
+
+            <!-- Información y opciones -->
+            <div>
+              <div id="detail-info"></div>
+              <div id="detail-config" class="mt-2"></div>
+
+              <!-- CTA -->
+              <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                <button id="detail-add" type="button" data-label="Añadir al pedido"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold uppercase tracking-widest text-sm transition-colors">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Añadir al pedido
+                </button>
+                <a href="cart.html" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-ink/20 dark:border-white/20 text-ink dark:text-white hover:border-brand-500 hover:text-brand-600 uppercase tracking-widest text-sm transition-colors">Ver mi pedido</a>
+              </div>
+
+              <p class="text-xs text-gray-400 mt-4 flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Se fabrica al hacer tu pedido · te avisamos antes de imprimir si lleva texto.</p>
+
+              <!-- Ficha técnica / envío / personalización -->
+              <div id="detail-specs" class="mt-8"></div>
+            </div>
+          </div>
+
+          <!-- Relacionados -->
+          <section class="mt-16 lg:mt-24 pt-10 border-t border-gray-100 dark:border-gray-800">
+            <h2 class="font-display text-xl sm:text-2xl font-semibold text-ink dark:text-white mb-8 text-center">También te puede gustar</h2>
+            <div id="detail-related" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-black/95 backdrop-blur-md transition-colors duration-300" x-data="{ mobileMenuOpen: false, darkMode: document.documentElement.classList.contains('dark') }">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 lg:h-20 flex items-center justify-between">
+
+          <!-- Mobile Menu Button -->
+          <button class="lg:hidden p-2 -ml-2 text-gray-900 dark:text-white" @click="mobileMenuOpen = true" aria-label="Open menu">
+            <i class="w-6 h-6" data-lucide="menu"></i>
+          </button>
+
+          <!-- Logo (Centered on mobile) -->
+          <a class="absolute left-1/2 -translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0" href="index.html">
+            <span class="text-xl lg:text-2xl font-light tracking-[0.3em] uppercase text-gray-900 dark:text-white">DISAN3D</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-8">
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">Shop</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="collections.html">Collections</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="lookbook.html">Lookbook</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">About</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="blog.html">Journal</a>
+          </nav>
+
+          <!-- Right Icons -->
+          <div class="flex items-center gap-3 lg:gap-4">
+            <button class="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode); document.documentElement.classList.toggle('dark', darkMode)" aria-label="Toggle dark mode">
+              <i class="w-5 h-5" data-lucide="moon" x-show="!darkMode"></i>
+              <i class="w-5 h-5" data-lucide="sun" x-show="darkMode"></i>
+            </button>
+            <a class="hidden lg:block p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Account" href="login.html">
+              <i class="w-5 h-5" data-lucide="user"></i>
+            </a>
+            <a class="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors relative" aria-label="Cart" href="cart.html">
+              <i class="w-5 h-5" data-lucide="shopping-bag"></i>
+              <span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white text-[10px] font-medium flex items-center justify-center rounded-full">2</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div class="fixed inset-0 z-[60] bg-black/50 lg:hidden" @click="mobileMenuOpen = false" x-cloak="" x-show="mobileMenuOpen" x-transition:enter="transition-opacity duration-300" x-transition:enter-end="opacity-100" x-transition:enter-start="opacity-0" x-transition:leave="transition-opacity duration-300" x-transition:leave-end="opacity-0" x-transition:leave-start="opacity-100"></div>
+
+      <!-- Mobile Menu Panel -->
+      <div class="fixed inset-y-0 left-0 z-[70] w-[80%] max-w-sm h-[100vh] bg-white dark:bg-black shadow-2xl lg:hidden overflow-y-auto" x-cloak="" x-show="mobileMenuOpen" x-transition:enter="transition transform duration-300" x-transition:enter-end="translate-x-0" x-transition:enter-start="-translate-x-full" x-transition:leave="transition transform duration-300" x-transition:leave-end="-translate-x-full" x-transition:leave-start="translate-x-0">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-12">
+            <span class="text-lg font-light tracking-[0.3em] uppercase text-gray-900 dark:text-white">DISAN3D</span>
+            <button class="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white" @click="mobileMenuOpen = false">
+              <i class="w-6 h-6" data-lucide="x"></i>
+            </button>
+          </div>
+
+          <nav class="space-y-6">
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">Shop</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="collections.html">Collections</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="lookbook.html">Lookbook</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">About</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="blog.html">Journal</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Contact</a>
+          </nav>
+          <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+            <a class="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" href="login.html">
+              <i class="w-5 h-5" data-lucide="user"></i>
+              <span class="uppercase tracking-widest text-sm">Account</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-20 lg:pt-24" x-data="{ selectedSize: '', selectedColor: 'Cream', quantity: 1, activeImage: 0 }">
+
+      <!-- Breadcrumb -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <nav class="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400">
+          <a class="hover:text-gray-900 dark:hover:text-white transition-colors" href="index.html">Home</a>
+          <span class="mx-2">/</span>
+          <a class="hover:text-gray-900 dark:hover:text-white transition-colors" href="products.html">Shop</a>
+          <span class="mx-2">/</span>
+          <span class="text-gray-900 dark:text-white">Silk Draped Blouse</span>
+        </nav>
+      </div>
+
+      <!-- Silk Draped Blouse -->
+      <section id="silk_draped_blouse" class="py-8 lg:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-8 lg:gap-16">
+
+            <!-- Product Gallery -->
+            <div class="space-y-4">
+              <div class="aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900">
+                <img class="w-full h-full object-cover" alt="Cream silk blouse front view draped elegantly - editorial fashion product photo" src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&h=1067&fit=crop" x-show="activeImage === 0"/>
+                <img class="w-full h-full object-cover" alt="Cream silk blouse back view draping detail - editorial fashion product photo" src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=800&h=1067&fit=crop" x-cloak="" x-show="activeImage === 1"/>
+                <img class="w-full h-full object-cover" alt="Cream silk blouse on model styled look - editorial fashion lifestyle photo" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&h=1067&fit=crop" x-cloak="" x-show="activeImage === 2"/>
+              </div>
+              <div class="grid grid-cols-4 gap-4">
+                <button class="aspect-square overflow-hidden bg-gray-100 dark:bg-gray-900" :class="activeImage === 0 ? 'ring-2 ring-gray-900 dark:ring-white' : ''" @click="activeImage = 0">
+                  <img class="w-full h-full object-cover" alt="Silk blouse thumbnail 1" src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200&h=200&fit=crop"/>
+                </button>
+                <button class="aspect-square overflow-hidden bg-gray-100 dark:bg-gray-900" :class="activeImage === 1 ? 'ring-2 ring-gray-900 dark:ring-white' : ''" @click="activeImage = 1">
+                  <img class="w-full h-full object-cover" alt="Silk blouse thumbnail 2" src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=200&h=200&fit=crop"/>
+                </button>
+                <button class="aspect-square overflow-hidden bg-gray-100 dark:bg-gray-900" :class="activeImage === 2 ? 'ring-2 ring-gray-900 dark:ring-white' : ''" @click="activeImage = 2">
+                  <img class="w-full h-full object-cover" alt="Silk blouse thumbnail 3" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=200&h=200&fit=crop"/>
+                </button>
+                <button class="aspect-square overflow-hidden bg-gray-100 dark:bg-gray-900" :class="activeImage === 3 ? 'ring-2 ring-gray-900 dark:ring-white' : ''" @click="activeImage = 3">
+                  <img class="w-full h-full object-cover" alt="Silk blouse thumbnail 4" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&h=200&fit=crop"/>
+                </button>
+              </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="lg:py-8">
+              <h1 class="text-2xl lg:text-3xl font-light uppercase tracking-[0.15em] text-gray-900 dark:text-white mb-2">Silk Draped Blouse</h1>
+              <p class="text-xl text-gray-600 dark:text-gray-400 mb-6">$295</p>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+                Crafted from 100% mulberry silk, this blouse features an elegant draped neckline and relaxed silhouette. The perfect piece to transition from day to evening with effortless sophistication.
+              </p>
+
+              <!-- Color Selection -->
+              <div class="mb-6">
+                <label class="text-xs uppercase tracking-widest text-gray-900 dark:text-white mb-3 block">Color:
+                  <span x-text="selectedColor"></span>
+                </label>
+                <div class="flex gap-3">
+                  <button class="w-8 h-8 rounded-full bg-amber-50 border border-gray-200" :class="selectedColor === 'Cream' ? 'ring-2 ring-gray-900 dark:ring-white ring-offset-2' : ''" @click="selectedColor = 'Cream'" aria-label="Cream"></button>
+                  <button class="w-8 h-8 rounded-full bg-black border border-gray-200" :class="selectedColor === 'Black' ? 'ring-2 ring-gray-900 dark:ring-white ring-offset-2' : ''" @click="selectedColor = 'Black'" aria-label="Black"></button>
+                  <button class="w-8 h-8 rounded-full bg-blue-900 border border-gray-200" :class="selectedColor === 'Navy' ? 'ring-2 ring-gray-900 dark:ring-white ring-offset-2' : ''" @click="selectedColor = 'Navy'" aria-label="Navy"></button>
+                </div>
+              </div>
+
+              <!-- Size Selection -->
+              <div class="mb-6">
+                <div class="flex items-center justify-between mb-3">
+                  <label class="text-xs uppercase tracking-widest text-gray-900 dark:text-white">Size</label>
+                  <button class="text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white underline">Size Guide</button>
+                </div>
+                <div class="grid grid-cols-5 gap-2">
+                  <button class="py-3 text-sm uppercase tracking-widest border hover:border-gray-900 dark:hover:border-white transition-colors" :class="selectedSize === 'XS' ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900' : 'border-gray-300 dark:border-gray-700'" @click="selectedSize = 'XS'">XS</button>
+                  <button class="py-3 text-sm uppercase tracking-widest border hover:border-gray-900 dark:hover:border-white transition-colors" :class="selectedSize === 'S' ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900' : 'border-gray-300 dark:border-gray-700'" @click="selectedSize = 'S'">S</button>
+                  <button class="py-3 text-sm uppercase tracking-widest border hover:border-gray-900 dark:hover:border-white transition-colors" :class="selectedSize === 'M' ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900' : 'border-gray-300 dark:border-gray-700'" @click="selectedSize = 'M'">M</button>
+                  <button class="py-3 text-sm uppercase tracking-widest border hover:border-gray-900 dark:hover:border-white transition-colors" :class="selectedSize === 'L' ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900' : 'border-gray-300 dark:border-gray-700'" @click="selectedSize = 'L'">L</button>
+                  <button class="py-3 text-sm uppercase tracking-widest border hover:border-gray-900 dark:hover:border-white transition-colors" :class="selectedSize === 'XL' ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900' : 'border-gray-300 dark:border-gray-700'" @click="selectedSize = 'XL'">XL</button>
+                </div>
+              </div>
+
+              <!-- Quantity -->
+              <div class="mb-8">
+                <label class="text-xs uppercase tracking-widest text-gray-900 dark:text-white mb-3 block">Quantity</label>
+                <div class="flex items-center border border-gray-300 dark:border-gray-700 w-32">
+                  <button class="p-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" @click="quantity = Math.max(1, quantity - 1)">
+                    <i class="w-4 h-4" data-lucide="minus"></i>
+                  </button>
+                  <span class="flex-1 text-center" x-text="quantity"></span>
+                  <button class="p-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" @click="quantity++">
+                    <i class="w-4 h-4" data-lucide="plus"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Add to Cart -->
+              <div class="flex gap-4 mb-8">
+                <a class="flex-1 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 uppercase tracking-widest text-sm text-center hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors" href="cart.html">Add to Cart</a>
+                <button class="p-4 border border-gray-300 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white transition-colors" aria-label="Add to wishlist">
+                  <i class="w-5 h-5" data-lucide="heart"></i>
+                </button>
+              </div>
+
+              <!-- Product Details Accordion -->
+              <div class="border-t border-gray-200 dark:border-gray-800" x-data="{ open: 'details' }">
+                <div class="border-b border-gray-200 dark:border-gray-800">
+                  <button class="w-full py-4 flex items-center justify-between text-xs uppercase tracking-widest" @click="open = open === 'details' ? '' : 'details'">
+                    <span>Details</span>
+                    <i class="w-4 h-4 transition-transform" :class="open === 'details' ? 'rotate-180' : ''" data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="pb-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed" x-collapse="" x-show="open === 'details'">
+                    <ul class="list-disc list-inside space-y-1">
+                      <li>100% Mulberry Silk</li>
+                      <li>Draped neckline</li>
+                      <li>Relaxed fit</li>
+                      <li>Dry clean only</li>
+                      <li>Made in Italy</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="border-b border-gray-200 dark:border-gray-800">
+                  <button class="w-full py-4 flex items-center justify-between text-xs uppercase tracking-widest" @click="open = open === 'shipping' ? '' : 'shipping'">
+                    <span>Shipping & Returns</span>
+                    <i class="w-4 h-4 transition-transform" :class="open === 'shipping' ? 'rotate-180' : ''" data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="pb-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed" x-collapse="" x-show="open === 'shipping'">
+                    <p class="mb-2">Free standard shipping on all orders over $200.</p>
+                    <p>
+                      Returns accepted within 14 days of delivery. Items must be unworn with tags attached.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- You May Also Like -->
+      <section id="you_may_also_like" class="py-20 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-xl font-light uppercase tracking-[0.2em] text-gray-900 dark:text-white text-center mb-12">You May Also Like</h2>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Beige cashmere sweater - cozy fashion ecommerce product photo" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Cashmere Sweater</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$395</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Navy tailored trousers - sophisticated fashion ecommerce product photo" src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Tailored Trousers</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$245</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Cognac leather tote bag - luxury fashion ecommerce accessory photo" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Leather Tote Bag</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$425</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="White minimalist leather sneakers - clean fashion ecommerce footwear photo" src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Minimal Sneakers</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$195</p>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
+
+      <!-- Newsletter Section -->
+      <div class="border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="max-w-xl mx-auto text-center">
+            <h3 class="text-sm uppercase tracking-[0.3em] text-gray-900 dark:text-white mb-4">Novedades</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+              Subscribe for exclusive access to new collections, style guides, and special offers.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3" @submit.prevent="subscribed = true" x-data="{ subscribed: false }">
+              <input class="flex-1 px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all" placeholder="Your email address" required="" type="email"/>
+              <button class="px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 uppercase tracking-widest text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors" type="submit">
+                <span x-show="!subscribed">Subscribe</span>
+                <span x-show="subscribed">Thank You</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Footer -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+
+          <!-- Shop -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">Shop</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">All Products</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="collections.html">Collections</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">New Arrivals</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="lookbook.html">Lookbook</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Help -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">Help</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Contact Us</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Shipping & Returns</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Size Guide</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">FAQs</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- About -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">About</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">Our Story</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">Sustainability</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="blog.html">Journal</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Careers</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Follow -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">Follow</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://instagram.com">Instagram</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://pinterest.com">Pinterest</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://facebook.com">Facebook</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://twitter.com">Twitter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-gray-500 dark:text-gray-400">© DISAN3D · Todos los derechos reservados.</p>
+            <div class="flex items-center gap-6">
+              <a class="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="privacy.html">Privacy Policy</a>
+              <a class="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="terms.html">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

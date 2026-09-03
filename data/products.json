@@ -1,0 +1,357 @@
+[
+  {
+    "id": "bola-navidad",
+    "name": "Bola de Navidad Personalizada",
+    "tagline": "Un adorno único para el árbol.",
+    "description": "Adorno de Navidad en forma de bola que puedes personalizar con un nombre o una fecha. Un adorno único que hará especial tu árbol año tras año.",
+    "price": 7.9,
+    "currency": "EUR",
+    "customizable": true,
+    "bestseller": false,
+    "colors": [
+      "Rojo",
+      "Verde",
+      "Blanco",
+      "Dorado"
+    ],
+    "dimensions": "Ø 8 cm",
+    "material": "PLA",
+    "printTime": "~1 h",
+    "categories": [
+      "decoracion",
+      "personalizados",
+      "regalos",
+      "familia",
+      "objetos-decorativos",
+      "navidad"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "calabaza-halloween",
+    "name": "Calabaza de Halloween",
+    "tagline": "Para decorar con un toque divertido… y duradero.",
+    "description": "Calabaza decorativa impresa en 3D para Halloween. Un toque divertido y duradero para decorar tu casa en la noche más terrorífica del año.",
+    "price": 9.9,
+    "currency": "EUR",
+    "customizable": false,
+    "bestseller": true,
+    "colors": [
+      "Naranja",
+      "Negro",
+      "Verde"
+    ],
+    "dimensions": "11 × 11 × 12 cm",
+    "material": "PLA",
+    "printTime": "~5 h",
+    "categories": [
+      "decoracion",
+      "regalos",
+      "amigos",
+      "ninos",
+      "familia",
+      "objetos-decorativos",
+      "halloween"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "coche-clasico",
+    "name": "Figura Coche Clásico",
+    "tagline": "Un clásico que nunca pasa de moda.",
+    "description": "Figura de un coche clásico impresa en 3D. Un clásico que nunca pasa de moda y que encaja perfecto como regalo para papá, los abuelos o los más pequeños de la casa.",
+    "price": 14.9,
+    "currency": "EUR",
+    "customizable": false,
+    "bestseller": true,
+    "colors": [
+      "Rojo",
+      "Azul",
+      "Negro",
+      "Blanco"
+    ],
+    "dimensions": "14 × 6 × 5 cm",
+    "material": "PLA",
+    "printTime": "~4 h",
+    "categories": [
+      "regalos",
+      "decoracion",
+      "papa",
+      "abuelos",
+      "ninos",
+      "figuras"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "dinosaurio-juguete",
+    "name": "Figura Dinosaurio",
+    "tagline": "Un juguete robusto que aguanta mil aventuras.",
+    "description": "Figura de dinosaurio impresa en 3D, robusta y sin piezas pequeñas. Un juguete que aguanta mil aventuras y despierta la imaginación de los más pequeños.",
+    "price": 10.9,
+    "currency": "EUR",
+    "customizable": false,
+    "bestseller": false,
+    "colors": [
+      "Verde",
+      "Turquesa",
+      "Naranja"
+    ],
+    "dimensions": "15 × 6 × 8 cm",
+    "material": "PLA",
+    "printTime": "~4 h",
+    "categories": [
+      "regalos",
+      "ninos",
+      "juguetes",
+      "figuras"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "lampara-espiral",
+    "name": "Lámpara Espiral 3D",
+    "tagline": "Luz cálida y diseño imposible de fabricar de otra forma.",
+    "description": "Lámpara con pantalla en espiral impresa en 3D con filamento translúcido. Ofrece una luz cálida y un diseño que solo es posible fabricar con impresión 3D.",
+    "price": 39.9,
+    "currency": "EUR",
+    "customizable": false,
+    "bestseller": false,
+    "colors": [
+      "Blanco",
+      "Turquesa"
+    ],
+    "dimensions": "20 × 15 × 15 cm",
+    "material": "PLA translúcido",
+    "printTime": "~14 h",
+    "categories": [
+      "decoracion",
+      "regalos",
+      "pareja",
+      "familia",
+      "lamparas",
+      "navidad"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "llavero-corazon",
+    "name": "Llavero Corazón Personalizado",
+    "tagline": "El detalle perfecto para San Valentín.",
+    "description": "Un llavero en forma de corazón que puedes personalizar con el nombre que quieras. El detalle perfecto para San Valentín o para sorprender a esa persona especial cualquier día del año.",
+    "price": 5.9,
+    "currency": "EUR",
+    "customizable": true,
+    "bestseller": true,
+    "colors": [
+      "Blanco",
+      "Negro",
+      "Rosa",
+      "Rojo",
+      "Turquesa"
+    ],
+    "dimensions": "6 × 6 × 0,3 cm",
+    "material": "PLA",
+    "printTime": "~45 min",
+    "categories": [
+      "regalos",
+      "personalizados",
+      "pareja",
+      "mama",
+      "llaveros",
+      "san-valentin"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "llavero-nombre-papa",
+    "name": "Llavero Nombre Para Papá",
+    "tagline": "Su nombre grabado: un regalo que usará a diario.",
+    "description": "Llavero rectangular con el nombre grabado. Un regalo práctico y personal que papá usará a diario y que le recordará a quien se lo regaló.",
+    "price": 6.5,
+    "currency": "EUR",
+    "customizable": true,
+    "bestseller": false,
+    "colors": [
+      "Negro",
+      "Azul",
+      "Gris",
+      "Madera"
+    ],
+    "dimensions": "5 × 2,5 × 0,3 cm",
+    "material": "PLA",
+    "printTime": "~35 min",
+    "categories": [
+      "regalos",
+      "personalizados",
+      "papa",
+      "llaveros",
+      "dia-del-padre"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "macetero-geometrico",
+    "name": "Macetero Geométrico",
+    "tagline": "La casa perfecta para tus plantas.",
+    "description": "Macetero geométrico impreso en 3D con un acabado limpio y actual. La casa perfecta para tus plantas, tanto dentro como fuera de casa.",
+    "price": 11.9,
+    "currency": "EUR",
+    "customizable": false,
+    "bestseller": false,
+    "colors": [
+      "Blanco",
+      "Turquesa",
+      "Rosa"
+    ],
+    "dimensions": "10 × 10 × 9 cm",
+    "material": "PLA",
+    "printTime": "~6 h",
+    "categories": [
+      "decoracion",
+      "regalos",
+      "mama",
+      "familia",
+      "maceteros",
+      "dia-de-la-madre"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "marco-nombre",
+    "name": "Marco de Fotos con Nombre",
+    "tagline": "Guarda tu mejor recuerdo con su nombre.",
+    "description": "Marco de fotos personalizado con el nombre o la fecha que quieras. Guarda tu mejor recuerdo con un detalle único hecho a tu medida.",
+    "price": 16.9,
+    "currency": "EUR",
+    "customizable": true,
+    "bestseller": false,
+    "colors": [
+      "Blanco",
+      "Negro",
+      "Madera",
+      "Turquesa"
+    ],
+    "dimensions": "18 × 14 × 1,5 cm",
+    "material": "PLA",
+    "printTime": "~5 h",
+    "categories": [
+      "regalos",
+      "decoracion",
+      "personalizados",
+      "pareja",
+      "familia",
+      "abuelos",
+      "marcos",
+      "san-valentin",
+      "navidad",
+      "dia-de-la-madre"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "mini-busto",
+    "name": "Mini Busto Personalizado",
+    "tagline": "Un busto único… ¡incluso el tuyo o el de tu pareja!",
+    "description": "Mini busto personalizado a partir de una fotografía. Un regalo único y emocionante: inmortaliza a tu pareja, a un familiar o incluso a tu mascota en una pieza impresa en 3D.",
+    "price": 24.9,
+    "currency": "EUR",
+    "customizable": true,
+    "bestseller": false,
+    "colors": [
+      "Blanco",
+      "Gris",
+      "Negro"
+    ],
+    "dimensions": "9 × 9 × 12 cm",
+    "material": "PLA",
+    "printTime": "~6 h",
+    "categories": [
+      "personalizados",
+      "regalos",
+      "pareja",
+      "familia",
+      "figuras",
+      "san-valentin",
+      "navidad"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "organizador-hexagonal",
+    "name": "Organizador de Escritorio",
+    "tagline": "Orden y estilo en un solo objeto.",
+    "description": "Organizador de escritorio de diseño hexagonal con varios compartimentos. Orden y estilo en un solo objeto, perfecto para regalar o para tu propio escritorio.",
+    "price": 18.9,
+    "currency": "EUR",
+    "customizable": false,
+    "bestseller": true,
+    "colors": [
+      "Turquesa",
+      "Gris",
+      "Negro"
+    ],
+    "dimensions": "16 × 9 × 12 cm",
+    "material": "PLA",
+    "printTime": "~9 h",
+    "categories": [
+      "decoracion",
+      "regalos",
+      "papa",
+      "amigos",
+      "organizadores"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  },
+  {
+    "id": "placa-mascota",
+    "name": "Placa para Mascota Personalizada",
+    "tagline": "Su nombre y tu teléfono, grabados para siempre.",
+    "description": "Placa identificativa para mascota con su nombre y tu teléfono grabados. Una placa resistente e impresa en 3D para que tu mejor amigo esté siempre identificado.",
+    "price": 8.9,
+    "currency": "EUR",
+    "customizable": true,
+    "bestseller": false,
+    "colors": [
+      "Rojo",
+      "Azul",
+      "Verde",
+      "Negro"
+    ],
+    "dimensions": "4,5 × 3 × 0,3 cm",
+    "material": "PLA",
+    "printTime": "~30 min",
+    "categories": [
+      "regalos",
+      "personalizados",
+      "mascotas",
+      "amigos",
+      "llaveros"
+    ],
+    "images": [],
+    "available": true,
+    "seo": {}
+  }
+]

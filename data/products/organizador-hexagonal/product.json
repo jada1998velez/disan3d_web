@@ -1,0 +1,18 @@
+{
+  "id": "organizador-hexagonal",
+  "name": "Organizador de Escritorio",
+  "tagline": "Orden y estilo en un solo objeto.",
+  "description": "Organizador de escritorio de diseño hexagonal con varios compartimentos. Orden y estilo en un solo objeto, perfecto para regalar o para tu propio escritorio.",
+  "price": 18.9,
+  "currency": "EUR",
+  "customizable": false,
+  "bestseller": true,
+  "colors": ["Turquesa", "Gris", "Negro"],
+  "dimensions": "16 × 9 × 12 cm",
+  "material": "PLA",
+  "printTime": "~9 h",
+  "categories": ["decoracion", "regalos", "papa", "amigos", "organizadores"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

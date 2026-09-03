@@ -1,0 +1,18 @@
+{
+  "id": "marco-nombre",
+  "name": "Marco de Fotos con Nombre",
+  "tagline": "Guarda tu mejor recuerdo con su nombre.",
+  "description": "Marco de fotos personalizado con el nombre o la fecha que quieras. Guarda tu mejor recuerdo con un detalle único hecho a tu medida.",
+  "price": 16.9,
+  "currency": "EUR",
+  "customizable": true,
+  "bestseller": false,
+  "colors": ["Blanco", "Negro", "Madera", "Turquesa"],
+  "dimensions": "18 × 14 × 1,5 cm",
+  "material": "PLA",
+  "printTime": "~5 h",
+  "categories": ["regalos", "decoracion", "personalizados", "pareja", "familia", "abuelos", "marcos", "san-valentin", "navidad", "dia-de-la-madre"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

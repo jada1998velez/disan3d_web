@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Mi cuenta · DISAN3D</title>
+    <meta content="DISAN3D · Impresión 3D personalizada. Regalos, decoración y objetos únicos, personalizables y fabricados bajo pedido." name="description"/>
+    <meta content="impresion 3d, regalos personalizados, decoracion impresion 3d, personalizados, disan3d, regalo original" name="keywords"/>
+    <meta content="DISAN3D — Impresión 3D personalizada" property="og:title"/>
+    <meta content="DISAN3D · Regalos, decoración y objetos únicos impresos en 3D, personalizables y fabricados bajo pedido." property="og:description"/>
+    <meta content="website" property="og:type"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="DISAN3D — Impresión 3D personalizada" name="twitter:title"/>
+    <meta content="DISAN3D · Regalos, decoración y objetos únicos impresos en 3D, personalizables y fabricados bajo pedido." name="twitter:description"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <link href="style.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer="" src="scripts.js"></script>
+    <script defer="" src="d3-data.js"></script>
+    <script defer="" src="d3-app.js"></script>
+  </head>
+  <body class="bg-white dark:bg-black text-gray-900 dark:text-white min-h-screen flex flex-col" data-page="login">
+    <div id="site-header"></div>
+    <div id="page-root" class="flex-1">
+      <main class="pt-24 lg:pt-32 pb-16 px-4 flex items-start justify-center">
+        <div class="w-full max-w-md">
+          <div class="text-center mb-8">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-300 text-2xl">👤</span>
+            <h1 class="font-display text-2xl font-semibold text-ink dark:text-white mt-4">Mi cuenta</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">En DISAN3D gestionamos los pedidos de forma cercana: por email o WhatsApp.</p>
+          </div>
+
+          <div class="rounded-2xl ring-1 ring-gray-100 dark:ring-gray-800 p-6 sm:p-8 space-y-4">
+            <p class="text-xs uppercase tracking-[0.25em] font-semibold text-ink dark:text-white">Acceder</p>
+            <div><label class="block text-xs uppercase tracking-widest text-gray-400 mb-1.5" for="lg-email">Email</label><input id="lg-email" type="email" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-ink dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/50" placeholder="tucorreo@ejemplo.com"/></div>
+            <div><label class="block text-xs uppercase tracking-widest text-gray-400 mb-1.5" for="lg-pass">Contraseña</label><input id="lg-pass" type="password" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-ink dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/50" placeholder="••••••••"/></div>
+            <button type="button" class="w-full py-3.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-xs font-semibold uppercase tracking-widest transition-colors" onclick="var b=this;b.textContent='Zona demo: no hay cuentas todavía';b.disabled=true;">Entrar</button>
+            <p class="text-xs text-gray-400 text-center pt-1">Esta web es una plantilla. Para tu proyecto real, conecta aquí tu sistema de cuentas o gestiona pedidos por email/WhatsApp.</p>
+          </div>
+
+          <div class="mt-5 text-center">
+            <a class="text-sm text-brand-600 dark:text-brand-300 font-medium" href="cart.html">← Ver mi pedido actual</a>
+          </div>
+        </div>
+      </main>
+    </div>
+    <main class="flex-1 flex items-center justify-center px-4 py-12">
+      <div class="w-full max-w-md">
+
+        <!-- Logo -->
+        <div class="text-center mb-12">
+          <a class="text-2xl uppercase tracking-[0.3em] font-light text-gray-900 dark:text-white" href="index.html">DISAN3D</a>
+        </div>
+
+        <!-- Login Form -->
+        <div x-data="{ tab: 'login' }">
+
+          <!-- Tabs -->
+          <div class="flex border-b border-gray-200 dark:border-gray-800 mb-8">
+            <button class="flex-1 pb-4 text-xs uppercase tracking-widest transition-colors" :class="tab === 'login' ? 'text-gray-900 dark:text-white border-b-2 border-gray-900 dark:border-white' : 'text-gray-500'" @click="tab = 'login'">Sign In</button>
+            <button class="flex-1 pb-4 text-xs uppercase tracking-widest transition-colors" :class="tab === 'register' ? 'text-gray-900 dark:text-white border-b-2 border-gray-900 dark:border-white' : 'text-gray-500'" @click="tab = 'register'">Create Account</button>
+          </div>
+
+          <!-- Login Tab -->
+          <div x-show="tab === 'login'">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400 mb-2" for="login-email">Email</label>
+                <input id="login-email" class="w-full px-4 py-3 bg-transparent border border-gray-300 dark:border-gray-700 focus:border-gray-900 dark:focus:border-white focus:ring-0 text-gray-900 dark:text-white" required="" type="email"/>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400 mb-2" for="login-password">Password</label>
+                <input id="login-password" class="w-full px-4 py-3 bg-transparent border border-gray-300 dark:border-gray-700 focus:border-gray-900 dark:focus:border-white focus:ring-0 text-gray-900 dark:text-white" required="" type="password"/>
+              </div>
+              <div class="flex items-center justify-between">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input class="rounded border-gray-300 text-gray-900 focus:ring-gray-900" type="checkbox"/>
+                  <span class="text-sm text-gray-600 dark:text-gray-400">Remember me</span>
+                </label>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="javascript:void(0)">Forgot password?</a>
+              </div>
+              <button class="w-full py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 uppercase tracking-widest text-sm hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors" type="submit">Sign In</button>
+            </form>
+          </div>
+
+          <!-- Register Tab -->
+          <div x-cloak="" x-show="tab === 'register'">
+            <form class="space-y-6">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400 mb-2" for="reg-first">First Name</label>
+                  <input id="reg-first" class="w-full px-4 py-3 bg-transparent border border-gray-300 dark:border-gray-700 focus:border-gray-900 dark:focus:border-white focus:ring-0 text-gray-900 dark:text-white" required="" type="text"/>
+                </div>
+                <div>
+                  <label class="block text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400 mb-2" for="reg-last">Last Name</label>
+                  <input id="reg-last" class="w-full px-4 py-3 bg-transparent border border-gray-300 dark:border-gray-700 focus:border-gray-900 dark:focus:border-white focus:ring-0 text-gray-900 dark:text-white" required="" type="text"/>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400 mb-2" for="reg-email">Email</label>
+                <input id="reg-email" class="w-full px-4 py-3 bg-transparent border border-gray-300 dark:border-gray-700 focus:border-gray-900 dark:focus:border-white focus:ring-0 text-gray-900 dark:text-white" required="" type="email"/>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400 mb-2" for="reg-password">Password</label>
+                <input id="reg-password" class="w-full px-4 py-3 bg-transparent border border-gray-300 dark:border-gray-700 focus:border-gray-900 dark:focus:border-white focus:ring-0 text-gray-900 dark:text-white" required="" type="password"/>
+              </div>
+              <label class="flex items-start gap-2 cursor-pointer">
+                <input class="rounded border-gray-300 text-gray-900 focus:ring-gray-900 mt-1" type="checkbox"/>
+                <span class="text-sm text-gray-600 dark:text-gray-400">
+                  Subscribe to our newsletter for exclusive offers and early access to new collections.
+</span>
+              </label>
+              <button class="w-full py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 uppercase tracking-widest text-sm hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors" type="submit">Create Account</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <div class="mt-12 text-center">
+          <button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode); document.documentElement.classList.toggle('dark', darkMode)">
+            <i class="w-5 h-5" data-lucide="sun" x-show="darkMode"></i>
+            <i class="w-5 h-5" data-lucide="moon" x-show="!darkMode"></i>
+          </button>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="mt-8 text-center">
+          <a class="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="index.html">
+            <i class="w-4 h-4" data-lucide="arrow-left"></i> Back to Home
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

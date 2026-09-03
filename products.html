@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Catálogo de productos · DISAN3D</title>
+    <meta content="DISAN3D · Impresión 3D personalizada. Regalos, decoración y objetos únicos, personalizables y fabricados bajo pedido." name="description"/>
+    <meta content="impresion 3d, regalos personalizados, decoracion impresion 3d, personalizados, disan3d, regalo original" name="keywords"/>
+    <meta content="DISAN3D — Impresión 3D personalizada" property="og:title"/>
+    <meta content="DISAN3D · Regalos, decoración y objetos únicos impresos en 3D, personalizables y fabricados bajo pedido." property="og:description"/>
+    <meta content="website" property="og:type"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="DISAN3D — Impresión 3D personalizada" name="twitter:title"/>
+    <meta content="DISAN3D · Regalos, decoración y objetos únicos impresos en 3D, personalizables y fabricados bajo pedido." name="twitter:description"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <link href="style.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer="" src="scripts.js"></script>
+    <script defer="" src="d3-data.js"></script>
+    <script defer="" src="d3-app.js"></script>
+  </head>
+  <body class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden" data-page="catalog">
+    <div id="site-header"></div>
+    <div id="page-root">
+      <main id="catalog-root" class="pt-16 lg:pt-[4.5rem]">
+
+        <!-- Cabecera contextual (se rellena según temporada/destinatario/categoría) -->
+        <section class="bg-gray-50/70 dark:bg-gray-900/30 border-b border-gray-100 dark:border-gray-800">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 text-center">
+            <p id="catalog-hero-kicker" class="text-[11px] uppercase tracking-[0.3em] text-brand-600 dark:text-brand-300 font-semibold mb-2">Catálogo</p>
+            <h1 id="catalog-hero-title" class="font-display text-3xl sm:text-4xl font-semibold text-ink dark:text-white">Todos los productos</h1>
+            <p id="catalog-hero-text" class="text-gray-500 dark:text-gray-400 mt-2 max-w-xl mx-auto text-sm sm:text-base"></p>
+          </div>
+        </section>
+
+        <!-- Categorías rápidas (generadas por d3-app.js a partir de categories.json) -->
+        <section class="border-b border-gray-100 dark:border-gray-800 sticky top-16 lg:top-[4.5rem] z-30 bg-white/95 dark:bg-[#0b0f0f]/95 backdrop-blur">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="catalog-tabs" class="flex gap-2 overflow-x-auto no-scrollbar py-3"></div>
+          </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
+          <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+
+            <!-- Barra lateral de filtros (escritorio) -->
+            <aside class="hidden lg:block lg:col-span-3">
+              <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 mb-4">Filtrar</h2>
+              <div class="filter-insert border-t border-gray-100 dark:border-gray-800 pt-4"></div>
+            </aside>
+
+            <!-- Resultados -->
+            <div class="lg:col-span-9">
+              <div class="flex items-center justify-between gap-3 py-3 border-b border-gray-100 dark:border-gray-800">
+                <button id="filters-toggle" type="button" class="lg:hidden inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-ink dark:text-white">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtros
+                </button>
+                <span id="catalog-count" class="text-sm text-gray-400">—</span>
+                <select id="catalog-sort" class="bg-transparent text-xs uppercase tracking-widest text-ink dark:text-white cursor-pointer focus:outline-none border-0">
+                  <option value="featured">Destacados</option>
+                  <option value="price-asc">Precio: menor a mayor</option>
+                  <option value="price-desc">Precio: mayor a menor</option>
+                </select>
+              </div>
+
+              <div id="catalog-active" class="flex flex-wrap gap-2 py-3 min-h-[2rem]"></div>
+
+              <div id="catalog-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 py-6"></div>
+
+              <div class="text-center pb-14">
+                <button id="catalog-load" type="button" class="hidden px-8 py-3 rounded-xl border border-ink dark:border-white text-ink dark:text-white uppercase tracking-widest text-xs font-semibold hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-colors">Cargar más</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Filtros móvil (hoja inferior) -->
+    <div id="filters-overlay" class="fixed inset-0 z-[80] bg-black/50 hidden lg:hidden" aria-hidden="true"></div>
+    <div id="filters-panel-mobile" class="fixed inset-x-0 bottom-0 z-[90] bg-white dark:bg-gray-900 rounded-t-3xl shadow-2xl max-h-[85vh] overflow-y-auto transition-transform duration-300 translate-y-full lg:hidden">
+      <div class="p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-display text-lg font-semibold text-ink dark:text-white">Filtrar</h2>
+          <button id="filters-close" type="button" class="p-2 text-gray-500 hover:text-ink dark:hover:text-white" aria-label="Cerrar filtros">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <div class="filter-insert"></div>
+        <div class="flex gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+          <button id="filters-clear" type="button" class="flex-1 py-3 rounded-xl border border-gray-300 dark:border-gray-700 text-ink dark:text-white text-xs font-semibold uppercase tracking-widest">Limpiar</button>
+          <button id="filters-done" type="button" class="flex-1 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-xs font-semibold uppercase tracking-widest">Ver resultados</button>
+        </div>
+      </div>
+    </div>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-black/95 backdrop-blur-md transition-colors duration-300" x-data="{ mobileMenuOpen: false, darkMode: document.documentElement.classList.contains('dark') }">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 lg:h-20 flex items-center justify-between">
+
+          <!-- Mobile Menu Button -->
+          <button class="lg:hidden p-2 -ml-2 text-gray-900 dark:text-white" @click="mobileMenuOpen = true" aria-label="Open menu">
+            <i class="w-6 h-6" data-lucide="menu"></i>
+          </button>
+
+          <!-- Logo (Centered on mobile) -->
+          <a class="absolute left-1/2 -translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0" href="index.html">
+            <span class="text-xl lg:text-2xl font-light tracking-[0.3em] uppercase text-gray-900 dark:text-white">DISAN3D</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-8">
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">Shop</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="collections.html">Collections</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="lookbook.html">Lookbook</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">About</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="blog.html">Journal</a>
+          </nav>
+
+          <!-- Right Icons -->
+          <div class="flex items-center gap-3 lg:gap-4">
+            <button class="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode); document.documentElement.classList.toggle('dark', darkMode)" aria-label="Toggle dark mode">
+              <i class="w-5 h-5" data-lucide="moon" x-show="!darkMode"></i>
+              <i class="w-5 h-5" data-lucide="sun" x-show="darkMode"></i>
+            </button>
+            <a class="hidden lg:block p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Account" href="login.html">
+              <i class="w-5 h-5" data-lucide="user"></i>
+            </a>
+            <a class="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors relative" aria-label="Cart" href="cart.html">
+              <i class="w-5 h-5" data-lucide="shopping-bag"></i>
+              <span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white text-[10px] font-medium flex items-center justify-center rounded-full">2</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div class="fixed inset-0 z-[60] bg-black/50 lg:hidden" @click="mobileMenuOpen = false" x-cloak="" x-show="mobileMenuOpen" x-transition:enter="transition-opacity duration-300" x-transition:enter-end="opacity-100" x-transition:enter-start="opacity-0" x-transition:leave="transition-opacity duration-300" x-transition:leave-end="opacity-0" x-transition:leave-start="opacity-100"></div>
+
+      <!-- Mobile Menu Panel -->
+      <div class="fixed inset-y-0 left-0 z-[70] w-[80%] max-w-sm h-[100vh] bg-white dark:bg-black shadow-2xl lg:hidden overflow-y-auto" x-cloak="" x-show="mobileMenuOpen" x-transition:enter="transition transform duration-300" x-transition:enter-end="translate-x-0" x-transition:enter-start="-translate-x-full" x-transition:leave="transition transform duration-300" x-transition:leave-end="-translate-x-full" x-transition:leave-start="translate-x-0">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-12">
+            <span class="text-lg font-light tracking-[0.3em] uppercase text-gray-900 dark:text-white">DISAN3D</span>
+            <button class="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white" @click="mobileMenuOpen = false">
+              <i class="w-6 h-6" data-lucide="x"></i>
+            </button>
+          </div>
+
+          <nav class="space-y-6">
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">Shop</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="collections.html">Collections</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="lookbook.html">Lookbook</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">About</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="blog.html">Journal</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Contact</a>
+          </nav>
+          <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+            <a class="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" href="login.html">
+              <i class="w-5 h-5" data-lucide="user"></i>
+              <span class="uppercase tracking-widest text-sm">Account</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-20 lg:pt-24">
+
+      <!-- Shop All -->
+      <section id="shop_all" class="py-12 lg:py-16 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 class="text-2xl lg:text-3xl font-light uppercase tracking-[0.2em] text-gray-900 dark:text-white text-center">Shop All</h1>
+        </div>
+      </section>
+
+      <!-- Filter Bar -->
+      <section id="filter_bar" class="py-6 border-b border-gray-200 dark:border-gray-800" x-data="{ filterOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between">
+            <button class="flex items-center gap-2 text-sm uppercase tracking-widest text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" @click="filterOpen = !filterOpen">
+              <i class="w-4 h-4" data-lucide="sliders-horizontal"></i> Filters
+            </button>
+            <div class="flex items-center gap-4">
+              <span class="text-sm text-gray-500 dark:text-gray-400">24 Products</span>
+              <select class="bg-transparent text-sm uppercase tracking-widest text-gray-600 dark:text-gray-400 border-0 focus:ring-0 cursor-pointer">
+                <option>Sort by: Featured</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Newest</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Filter Panel -->
+          <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800 grid grid-cols-2 md:grid-cols-4 gap-6" x-cloak="" x-show="filterOpen">
+            <div>
+              <h4 class="text-xs uppercase tracking-widest text-gray-900 dark:text-white mb-4">Category</h4>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" type="checkbox"/>
+                  <span class="text-sm text-gray-600 dark:text-gray-400">Tops</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" type="checkbox"/>
+                  <span class="text-sm text-gray-600 dark:text-gray-400">Bottoms</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" type="checkbox"/>
+                  <span class="text-sm text-gray-600 dark:text-gray-400">Outerwear</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" type="checkbox"/>
+                  <span class="text-sm text-gray-600 dark:text-gray-400">Accessories</span>
+                </label>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-xs uppercase tracking-widest text-gray-900 dark:text-white mb-4">Size</h4>
+              <div class="flex flex-wrap gap-2">
+                <button class="px-3 py-1 text-sm border border-gray-300 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white transition-colors">XS</button>
+                <button class="px-3 py-1 text-sm border border-gray-300 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white transition-colors">S</button>
+                <button class="px-3 py-1 text-sm border border-gray-300 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white transition-colors">M</button>
+                <button class="px-3 py-1 text-sm border border-gray-300 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white transition-colors">L</button>
+                <button class="px-3 py-1 text-sm border border-gray-300 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white transition-colors">XL</button>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-xs uppercase tracking-widest text-gray-900 dark:text-white mb-4">Color</h4>
+              <div class="flex flex-wrap gap-2">
+                <button class="w-6 h-6 rounded-full bg-black border-2 border-gray-300" aria-label="Black"></button>
+                <button class="w-6 h-6 rounded-full bg-white border-2 border-gray-300" aria-label="White"></button>
+                <button class="w-6 h-6 rounded-full bg-gray-500 border-2 border-gray-300" aria-label="Gray"></button>
+                <button class="w-6 h-6 rounded-full bg-amber-800 border-2 border-gray-300" aria-label="Brown"></button>
+                <button class="w-6 h-6 rounded-full bg-rose-600 border-2 border-gray-300" aria-label="Rose"></button>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-xs uppercase tracking-widest text-gray-900 dark:text-white mb-4">Price</h4>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" type="checkbox"/>
+                  <span class="text-sm text-gray-600 dark:text-gray-400">Under $100</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" type="checkbox"/>
+                  <span class="text-sm text-gray-600 dark:text-gray-400">$100 - $300</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" type="checkbox"/>
+                  <span class="text-sm text-gray-600 dark:text-gray-400">$300 - $500</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" type="checkbox"/>
+                  <span class="text-sm text-gray-600 dark:text-gray-400">$500+</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Silk Draped Blouse -->
+      <section id="silk_draped_blouse" class="py-12 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Cream silk blouse draped elegantly - minimal fashion ecommerce product photo" src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Silk Draped Blouse</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$295</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Black wool overcoat structured - sophisticated fashion ecommerce product photo" src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Oversized Wool Coat</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$650</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Cognac leather tote bag - luxury fashion ecommerce accessory photo" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Leather Tote Bag</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$425</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="White minimalist leather sneakers - clean fashion ecommerce footwear photo" src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Minimal Sneakers</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$195</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Navy tailored trousers front view - sophisticated fashion ecommerce product photo" src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Tailored Trousers</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$245</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="White cotton t-shirt relaxed fit - minimal fashion ecommerce product photo" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Essential Tee</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$85</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Beige cashmere sweater soft texture - cozy fashion ecommerce product photo" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Cashmere Sweater</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$395</p>
+            </a>
+            <a class="group" href="product-detail.html">
+              <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Black leather crossbody bag compact - minimal fashion ecommerce accessory photo" src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=800&fit=crop"/>
+              </div>
+              <h3 class="text-sm uppercase tracking-wide text-gray-900 dark:text-white mb-1">Crossbody Bag</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">$275</p>
+            </a>
+          </div>
+
+          <!-- Load More -->
+          <div class="text-center mt-16">
+            <button class="px-8 py-3 border border-gray-900 dark:border-white text-gray-900 dark:text-white uppercase tracking-widest text-sm hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-colors">Load More</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
+
+      <!-- Newsletter Section -->
+      <div class="border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="max-w-xl mx-auto text-center">
+            <h3 class="text-sm uppercase tracking-[0.3em] text-gray-900 dark:text-white mb-4">Novedades</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+              Subscribe for exclusive access to new collections, style guides, and special offers.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3" @submit.prevent="subscribed = true" x-data="{ subscribed: false }">
+              <input class="flex-1 px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all" placeholder="Your email address" required="" type="email"/>
+              <button class="px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 uppercase tracking-widest text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors" type="submit">
+                <span x-show="!subscribed">Subscribe</span>
+                <span x-show="subscribed">Thank You</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Footer -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+
+          <!-- Shop -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">Shop</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">All Products</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="collections.html">Collections</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">New Arrivals</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="lookbook.html">Lookbook</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Help -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">Help</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Contact Us</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Shipping & Returns</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Size Guide</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">FAQs</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- About -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">About</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">Our Story</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">Sustainability</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="blog.html">Journal</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Careers</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Follow -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">Follow</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://instagram.com">Instagram</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://pinterest.com">Pinterest</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://facebook.com">Facebook</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://twitter.com">Twitter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-gray-500 dark:text-gray-400">© DISAN3D · Todos los derechos reservados.</p>
+            <div class="flex items-center gap-6">
+              <a class="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="privacy.html">Privacy Policy</a>
+              <a class="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="terms.html">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

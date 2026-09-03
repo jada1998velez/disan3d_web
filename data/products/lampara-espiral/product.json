@@ -1,0 +1,18 @@
+{
+  "id": "lampara-espiral",
+  "name": "Lámpara Espiral 3D",
+  "tagline": "Luz cálida y diseño imposible de fabricar de otra forma.",
+  "description": "Lámpara con pantalla en espiral impresa en 3D con filamento translúcido. Ofrece una luz cálida y un diseño que solo es posible fabricar con impresión 3D.",
+  "price": 39.9,
+  "currency": "EUR",
+  "customizable": false,
+  "bestseller": false,
+  "colors": ["Blanco", "Turquesa"],
+  "dimensions": "20 × 15 × 15 cm",
+  "material": "PLA translúcido",
+  "printTime": "~14 h",
+  "categories": ["decoracion", "regalos", "pareja", "familia", "lamparas", "navidad"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

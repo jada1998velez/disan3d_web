@@ -1,0 +1,18 @@
+{
+  "id": "calabaza-halloween",
+  "name": "Calabaza de Halloween",
+  "tagline": "Para decorar con un toque divertido… y duradero.",
+  "description": "Calabaza decorativa impresa en 3D para Halloween. Un toque divertido y duradero para decorar tu casa en la noche más terrorífica del año.",
+  "price": 9.9,
+  "currency": "EUR",
+  "customizable": false,
+  "bestseller": true,
+  "colors": ["Naranja", "Negro", "Verde"],
+  "dimensions": "11 × 11 × 12 cm",
+  "material": "PLA",
+  "printTime": "~5 h",
+  "categories": ["decoracion", "regalos", "amigos", "ninos", "familia", "objetos-decorativos", "halloween"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

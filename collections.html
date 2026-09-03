@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Colecciones y temporadas · DISAN3D</title>
+    <meta content="DISAN3D · Impresión 3D personalizada. Regalos, decoración y objetos únicos, personalizables y fabricados bajo pedido." name="description"/>
+    <meta content="impresion 3d, regalos personalizados, decoracion impresion 3d, personalizados, disan3d, regalo original" name="keywords"/>
+    <meta content="DISAN3D — Impresión 3D personalizada" property="og:title"/>
+    <meta content="DISAN3D · Regalos, decoración y objetos únicos impresos en 3D, personalizables y fabricados bajo pedido." property="og:description"/>
+    <meta content="website" property="og:type"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="DISAN3D — Impresión 3D personalizada" name="twitter:title"/>
+    <meta content="DISAN3D · Regalos, decoración y objetos únicos impresos en 3D, personalizables y fabricados bajo pedido." name="twitter:description"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <link href="style.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer="" src="scripts.js"></script>
+    <script defer="" src="d3-data.js"></script>
+    <script defer="" src="d3-app.js"></script>
+  </head>
+  <body class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden" data-page="collections">
+    <div id="site-header"></div>
+    <div id="page-root">
+      <main class="pt-16 lg:pt-[4.5rem]">
+        <section class="relative overflow-hidden bg-ink dark:bg-gray-900 text-white">
+          <div class="absolute -right-10 -bottom-16 text-[16rem] opacity-10 select-none" aria-hidden="true">🗓️</div>
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative">
+            <p class="text-[11px] uppercase tracking-[0.3em] text-brand-300 font-semibold mb-3">Colecciones</p>
+            <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">Temporadas y colecciones</h1>
+            <p class="text-white/70 mt-4 max-w-2xl text-sm sm:text-base">Cada temporada reúne los productos pensados para esa ocasión: regalos, decoración y detalles personalizados. La web te enseña automáticamente la campaña que toca.</p>
+          </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+          <h2 class="font-display text-xl sm:text-2xl font-semibold text-ink dark:text-white mb-6">Por temporada</h2>
+          <div id="collections-root" class="grid sm:grid-cols-2 gap-4 sm:gap-6"></div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 lg:pb-20">
+          <h2 class="font-display text-xl sm:text-2xl font-semibold text-ink dark:text-white mb-6">Explora por categoría</h2>
+          <div id="collections-categories" class="grid sm:grid-cols-2 gap-3"></div>
+          <div class="mt-10 text-center">
+            <a href="products.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold uppercase tracking-widest text-xs transition-colors">Ver todo el catálogo</a>
+          </div>
+        </section>
+      </main>
+    </div>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-black/95 backdrop-blur-md transition-colors duration-300" x-data="{ mobileMenuOpen: false, darkMode: document.documentElement.classList.contains('dark') }">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 lg:h-20 flex items-center justify-between">
+
+          <!-- Mobile Menu Button -->
+          <button class="lg:hidden p-2 -ml-2 text-gray-900 dark:text-white" @click="mobileMenuOpen = true" aria-label="Open menu">
+            <i class="w-6 h-6" data-lucide="menu"></i>
+          </button>
+
+          <!-- Logo (Centered on mobile) -->
+          <a class="absolute left-1/2 -translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0" href="index.html">
+            <span class="text-xl lg:text-2xl font-light tracking-[0.3em] uppercase text-gray-900 dark:text-white">DISAN3D</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-8">
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">Shop</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="collections.html">Collections</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="lookbook.html">Lookbook</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">About</a>
+            <a class="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="blog.html">Journal</a>
+          </nav>
+
+          <!-- Right Icons -->
+          <div class="flex items-center gap-3 lg:gap-4">
+            <button class="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode); document.documentElement.classList.toggle('dark', darkMode)" aria-label="Toggle dark mode">
+              <i class="w-5 h-5" data-lucide="moon" x-show="!darkMode"></i>
+              <i class="w-5 h-5" data-lucide="sun" x-show="darkMode"></i>
+            </button>
+            <a class="hidden lg:block p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Account" href="login.html">
+              <i class="w-5 h-5" data-lucide="user"></i>
+            </a>
+            <a class="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors relative" aria-label="Cart" href="cart.html">
+              <i class="w-5 h-5" data-lucide="shopping-bag"></i>
+              <span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white text-[10px] font-medium flex items-center justify-center rounded-full">2</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div class="fixed inset-0 z-[60] bg-black/50 lg:hidden" @click="mobileMenuOpen = false" x-cloak="" x-show="mobileMenuOpen" x-transition:enter="transition-opacity duration-300" x-transition:enter-end="opacity-100" x-transition:enter-start="opacity-0" x-transition:leave="transition-opacity duration-300" x-transition:leave-end="opacity-0" x-transition:leave-start="opacity-100"></div>
+
+      <!-- Mobile Menu Panel -->
+      <div class="fixed inset-y-0 left-0 z-[70] w-[80%] max-w-sm h-[100vh] bg-white dark:bg-black shadow-2xl lg:hidden overflow-y-auto" x-cloak="" x-show="mobileMenuOpen" x-transition:enter="transition transform duration-300" x-transition:enter-end="translate-x-0" x-transition:enter-start="-translate-x-full" x-transition:leave="transition transform duration-300" x-transition:leave-end="-translate-x-full" x-transition:leave-start="translate-x-0">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-12">
+            <span class="text-lg font-light tracking-[0.3em] uppercase text-gray-900 dark:text-white">DISAN3D</span>
+            <button class="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white" @click="mobileMenuOpen = false">
+              <i class="w-6 h-6" data-lucide="x"></i>
+            </button>
+          </div>
+
+          <nav class="space-y-6">
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">Shop</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="collections.html">Collections</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="lookbook.html">Lookbook</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">About</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="blog.html">Journal</a>
+            <a class="block text-lg uppercase tracking-widest text-gray-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Contact</a>
+          </nav>
+          <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+            <a class="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" href="login.html">
+              <i class="w-5 h-5" data-lucide="user"></i>
+              <span class="uppercase tracking-widest text-sm">Account</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-20 lg:pt-24">
+
+      <!-- The Quiet Edit -->
+      <section id="the_quiet_edit" class="relative h-[70vh] lg:h-[80vh] overflow-hidden">
+        <img class="absolute inset-0 w-full h-full object-cover" alt="Fashion model in dramatic lighting editorial pose - dark editorial fashion collection hero photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+        <div class="relative h-full flex items-end">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24 w-full">
+            <p class="text-xs uppercase tracking-[0.3em] text-white/80 mb-4">Autumn/Winter 2024</p>
+            <h1 class="text-4xl lg:text-6xl font-light uppercase tracking-[0.15em] text-white mb-6">The Quiet Edit</h1>
+            <a class="inline-block px-8 py-3 border border-white text-white uppercase tracking-widest text-sm hover:bg-white hover:text-gray-900 transition-colors" href="products.html">Shop Collection</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- All Collections -->
+      <section id="all_collections" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-xl font-light uppercase tracking-[0.2em] text-gray-900 dark:text-white text-center mb-16">All Collections</h2>
+          <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+
+            <!-- Collection 1 -->
+            <a class="group" href="products.html">
+              <div class="relative aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-6">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Model in tailored winter coat neutral tones - sophisticated fashion autumn collection photo" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&h=1000&fit=crop"/>
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+              </div>
+              <p class="text-xs uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 mb-2">12 Pieces</p>
+              <h3 class="text-lg font-light uppercase tracking-[0.15em] text-gray-900 dark:text-white">Essential Layers</h3>
+            </a>
+
+            <!-- Collection 2 -->
+            <a class="group" href="products.html">
+              <div class="relative aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-6">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Fashion model minimal studio white background - clean editorial spring collection photo" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=1000&fit=crop"/>
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+              </div>
+              <p class="text-xs uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 mb-2">8 Pieces</p>
+              <h3 class="text-lg font-light uppercase tracking-[0.15em] text-gray-900 dark:text-white">Studio Basics</h3>
+            </a>
+
+            <!-- Collection 3 -->
+            <a class="group" href="products.html">
+              <div class="relative aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-6">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Elegant evening wear black dress styling - dramatic fashion evening collection photo" src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&h=1000&fit=crop"/>
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+              </div>
+              <p class="text-xs uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 mb-2">6 Pieces</p>
+              <h3 class="text-lg font-light uppercase tracking-[0.15em] text-gray-900 dark:text-white">After Dark</h3>
+            </a>
+
+            <!-- Collection 4 -->
+            <a class="group" href="products.html">
+              <div class="relative aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-6">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Fashion model with shopping bags city street - vibrant lifestyle summer collection photo" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=1000&fit=crop"/>
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+              </div>
+              <p class="text-xs uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 mb-2">15 Pieces</p>
+              <h3 class="text-lg font-light uppercase tracking-[0.15em] text-gray-900 dark:text-white">City Escape</h3>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Explore The Archive -->
+      <section id="explore_the_archive" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 mb-4">Previous Seasons</p>
+          <h2 class="text-2xl lg:text-3xl font-light uppercase tracking-[0.15em] text-gray-900 dark:text-white mb-8">Explore the Archive</h2>
+          <a class="inline-block px-8 py-3 border border-gray-900 dark:border-white text-gray-900 dark:text-white uppercase tracking-widest text-sm hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-colors" href="products.html">View Archive</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
+
+      <!-- Newsletter Section -->
+      <div class="border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="max-w-xl mx-auto text-center">
+            <h3 class="text-sm uppercase tracking-[0.3em] text-gray-900 dark:text-white mb-4">Novedades</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+              Subscribe for exclusive access to new collections, style guides, and special offers.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3" @submit.prevent="subscribed = true" x-data="{ subscribed: false }">
+              <input class="flex-1 px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all" placeholder="Your email address" required="" type="email"/>
+              <button class="px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 uppercase tracking-widest text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors" type="submit">
+                <span x-show="!subscribed">Subscribe</span>
+                <span x-show="subscribed">Thank You</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Footer -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+
+          <!-- Shop -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">Shop</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">All Products</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="collections.html">Collections</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="products.html">New Arrivals</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="lookbook.html">Lookbook</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Help -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">Help</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Contact Us</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Shipping & Returns</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Size Guide</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">FAQs</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- About -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">About</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">Our Story</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="about.html">Sustainability</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="blog.html">Journal</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="contact.html">Careers</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Follow -->
+          <div>
+            <h4 class="text-xs uppercase tracking-[0.2em] text-gray-900 dark:text-white font-medium mb-6">Follow</h4>
+            <ul class="space-y-4">
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://instagram.com">Instagram</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://pinterest.com">Pinterest</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://facebook.com">Facebook</a>
+              </li>
+              <li>
+                <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors" href="https://twitter.com">Twitter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-gray-500 dark:text-gray-400">© DISAN3D · Todos los derechos reservados.</p>
+            <div class="flex items-center gap-6">
+              <a class="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="privacy.html">Privacy Policy</a>
+              <a class="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="terms.html">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

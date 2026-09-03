@@ -1,0 +1,18 @@
+{
+  "id": "dinosaurio-juguete",
+  "name": "Figura Dinosaurio",
+  "tagline": "Un juguete robusto que aguanta mil aventuras.",
+  "description": "Figura de dinosaurio impresa en 3D, robusta y sin piezas pequeñas. Un juguete que aguanta mil aventuras y despierta la imaginación de los más pequeños.",
+  "price": 10.9,
+  "currency": "EUR",
+  "customizable": false,
+  "bestseller": false,
+  "colors": ["Verde", "Turquesa", "Naranja"],
+  "dimensions": "15 × 6 × 8 cm",
+  "material": "PLA",
+  "printTime": "~4 h",
+  "categories": ["regalos", "ninos", "juguetes", "figuras"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

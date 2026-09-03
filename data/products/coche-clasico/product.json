@@ -1,0 +1,18 @@
+{
+  "id": "coche-clasico",
+  "name": "Figura Coche Clásico",
+  "tagline": "Un clásico que nunca pasa de moda.",
+  "description": "Figura de un coche clásico impresa en 3D. Un clásico que nunca pasa de moda y que encaja perfecto como regalo para papá, los abuelos o los más pequeños de la casa.",
+  "price": 14.9,
+  "currency": "EUR",
+  "customizable": false,
+  "bestseller": true,
+  "colors": ["Rojo", "Azul", "Negro", "Blanco"],
+  "dimensions": "14 × 6 × 5 cm",
+  "material": "PLA",
+  "printTime": "~4 h",
+  "categories": ["regalos", "decoracion", "papa", "abuelos", "ninos", "figuras"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

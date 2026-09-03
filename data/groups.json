@@ -1,0 +1,37 @@
+[
+  {
+    "id": "categoria",
+    "name": "Categorías",
+    "role": "catalogo",
+    "order": 1,
+    "active": true
+  },
+  {
+    "id": "para",
+    "name": "¿Para quién?",
+    "role": "regalos",
+    "order": 2,
+    "active": true
+  },
+  {
+    "id": "tipo",
+    "name": "Tipo de producto",
+    "role": "",
+    "order": 3,
+    "active": true
+  },
+  {
+    "id": "temporada",
+    "name": "Temporada",
+    "role": "temporada",
+    "order": 4,
+    "active": true
+  },
+  {
+    "id": "caracteristicas",
+    "name": "Características",
+    "role": "",
+    "order": 5,
+    "active": true
+  }
+]

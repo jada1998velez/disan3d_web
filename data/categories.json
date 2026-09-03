@@ -1,0 +1,298 @@
+[
+  {
+    "id": "regalos",
+    "name": "Regalos",
+    "group": "categoria",
+    "blurb": "Regalos impresos en 3D para cualquier ocasión.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 1
+  },
+  {
+    "id": "decoracion",
+    "name": "Decoración",
+    "group": "categoria",
+    "blurb": "Piezas únicas para dar personalidad a tu casa.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 2
+  },
+  {
+    "id": "personalizados",
+    "name": "Personalizados",
+    "group": "categoria",
+    "blurb": "Diseñado y fabricado a tu medida, con tu nombre o tu idea.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 3
+  },
+  {
+    "id": "mas-vendidos",
+    "name": "Más vendidos",
+    "group": "categoria",
+    "blurb": "Los favoritos de nuestra comunidad.",
+    "icon": "",
+    "image": "",
+    "derived": "bestseller",
+    "active": true,
+    "order": 4
+  },
+  {
+    "id": "pareja",
+    "name": "Para mi pareja",
+    "group": "para",
+    "blurb": "Sorpresas para esa persona especial.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 1
+  },
+  {
+    "id": "mama",
+    "name": "Para mamá",
+    "group": "para",
+    "blurb": "Detalles especiales para ella.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 2
+  },
+  {
+    "id": "papa",
+    "name": "Para papá",
+    "group": "para",
+    "blurb": "Regalos que le encantarán a papá.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 3
+  },
+  {
+    "id": "abuelos",
+    "name": "Para los abuelos",
+    "group": "para",
+    "blurb": "Detalles que emocionan a los abuelos.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 4
+  },
+  {
+    "id": "amigos",
+    "name": "Para amigos",
+    "group": "para",
+    "blurb": "Para esos amigos únicos.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 5
+  },
+  {
+    "id": "ninos",
+    "name": "Para niños",
+    "group": "para",
+    "blurb": "Juguetes y figuras que despiertan la imaginación.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 6
+  },
+  {
+    "id": "familia",
+    "name": "Para la familia",
+    "group": "para",
+    "blurb": "Ideas para toda la familia.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 7
+  },
+  {
+    "id": "mascotas",
+    "name": "Para mascotas",
+    "group": "para",
+    "blurb": "Placas y accesorios para tu mejor amigo.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 8
+  },
+  {
+    "id": "llaveros",
+    "name": "Llaveros",
+    "group": "tipo",
+    "blurb": "Llaveros personalizados y prácticos.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 1
+  },
+  {
+    "id": "figuras",
+    "name": "Figuras",
+    "group": "tipo",
+    "blurb": "Figuras y bustos impresos en 3D.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 2
+  },
+  {
+    "id": "marcos",
+    "name": "Marcos de fotos",
+    "group": "tipo",
+    "blurb": "Marcos personalizados para tus recuerdos.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 3
+  },
+  {
+    "id": "lamparas",
+    "name": "Lámparas",
+    "group": "tipo",
+    "blurb": "Lámparas con diseños imposibles de fabricar de otra forma.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 4
+  },
+  {
+    "id": "organizadores",
+    "name": "Organizadores",
+    "group": "tipo",
+    "blurb": "Orden y estilo para tu escritorio o casa.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 5
+  },
+  {
+    "id": "maceteros",
+    "name": "Maceteros",
+    "group": "tipo",
+    "blurb": "La casa perfecta para tus plantas.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 6
+  },
+  {
+    "id": "objetos-decorativos",
+    "name": "Objetos decorativos",
+    "group": "tipo",
+    "blurb": "Piezas decorativas únicas.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 7
+  },
+  {
+    "id": "juguetes",
+    "name": "Juguetes",
+    "group": "tipo",
+    "blurb": "Juguetes robustos y divertidos.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 8
+  },
+  {
+    "id": "san-valentin",
+    "name": "San Valentín",
+    "group": "temporada",
+    "blurb": "Descubre nuestros productos especiales para sorprender a esa persona especial.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 1,
+    "featured": {
+      "title": "San Valentín",
+      "kicker": "Temporada",
+      "subtitle": "Productos especiales para sorprender a esa persona especial.",
+      "cta": "Ver colección",
+      "image": "",
+      "tone": "rose",
+      "active": true
+    }
+  },
+  {
+    "id": "dia-del-padre",
+    "name": "Día del Padre",
+    "group": "temporada",
+    "blurb": "Regalos únicos impresos en 3D para papá.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 2,
+    "featured": {
+      "title": "Día del Padre",
+      "kicker": "Temporada",
+      "subtitle": "Regalos únicos impresos en 3D para papá.",
+      "cta": "Ver colección",
+      "image": "",
+      "tone": "blue",
+      "active": true
+    }
+  },
+  {
+    "id": "dia-de-la-madre",
+    "name": "Día de la Madre",
+    "group": "temporada",
+    "blurb": "Detalles hechos con cariño para ella.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 3,
+    "featured": {
+      "title": "Día de la Madre",
+      "kicker": "Temporada",
+      "subtitle": "Detalles hechos con cariño para ella.",
+      "cta": "Ver colección",
+      "image": "",
+      "tone": "pink",
+      "active": true
+    }
+  },
+  {
+    "id": "halloween",
+    "name": "Halloween",
+    "group": "temporada",
+    "blurb": "Decoración y figuras para una noche de miedo.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 4,
+    "featured": {
+      "title": "Halloween",
+      "kicker": "Temporada",
+      "subtitle": "Decoración y figuras para una noche de miedo.",
+      "cta": "Ver colección",
+      "image": "",
+      "tone": "orange",
+      "active": true
+    }
+  },
+  {
+    "id": "navidad",
+    "name": "Navidad",
+    "group": "temporada",
+    "blurb": "Regalos personalizados para una Navidad inolvidable.",
+    "icon": "",
+    "image": "",
+    "active": true,
+    "order": 5,
+    "featured": {
+      "title": "Navidad",
+      "kicker": "Temporada",
+      "subtitle": "Regalos personalizados para una Navidad inolvidable.",
+      "cta": "Ver colección",
+      "image": "",
+      "tone": "green",
+      "active": true
+    }
+  }
+]

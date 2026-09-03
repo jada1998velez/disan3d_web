@@ -1,0 +1,18 @@
+{
+  "id": "bola-navidad",
+  "name": "Bola de Navidad Personalizada",
+  "tagline": "Un adorno único para el árbol.",
+  "description": "Adorno de Navidad en forma de bola que puedes personalizar con un nombre o una fecha. Un adorno único que hará especial tu árbol año tras año.",
+  "price": 7.9,
+  "currency": "EUR",
+  "customizable": true,
+  "bestseller": false,
+  "colors": ["Rojo", "Verde", "Blanco", "Dorado"],
+  "dimensions": "Ø 8 cm",
+  "material": "PLA",
+  "printTime": "~1 h",
+  "categories": ["decoracion", "personalizados", "regalos", "familia", "objetos-decorativos", "navidad"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

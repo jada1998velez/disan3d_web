@@ -1,0 +1,18 @@
+{
+  "id": "placa-mascota",
+  "name": "Placa para Mascota Personalizada",
+  "tagline": "Su nombre y tu teléfono, grabados para siempre.",
+  "description": "Placa identificativa para mascota con su nombre y tu teléfono grabados. Una placa resistente e impresa en 3D para que tu mejor amigo esté siempre identificado.",
+  "price": 8.9,
+  "currency": "EUR",
+  "customizable": true,
+  "bestseller": false,
+  "colors": ["Rojo", "Azul", "Verde", "Negro"],
+  "dimensions": "4,5 × 3 × 0,3 cm",
+  "material": "PLA",
+  "printTime": "~30 min",
+  "categories": ["regalos", "personalizados", "mascotas", "amigos", "llaveros"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

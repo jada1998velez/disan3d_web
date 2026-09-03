@@ -1,0 +1,18 @@
+{
+  "id": "macetero-geometrico",
+  "name": "Macetero Geométrico",
+  "tagline": "La casa perfecta para tus plantas.",
+  "description": "Macetero geométrico impreso en 3D con un acabado limpio y actual. La casa perfecta para tus plantas, tanto dentro como fuera de casa.",
+  "price": 11.9,
+  "currency": "EUR",
+  "customizable": false,
+  "bestseller": false,
+  "colors": ["Blanco", "Turquesa", "Rosa"],
+  "dimensions": "10 × 10 × 9 cm",
+  "material": "PLA",
+  "printTime": "~6 h",
+  "categories": ["decoracion", "regalos", "mama", "familia", "maceteros", "dia-de-la-madre"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

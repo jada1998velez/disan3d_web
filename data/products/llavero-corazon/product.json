@@ -1,0 +1,18 @@
+{
+  "id": "llavero-corazon",
+  "name": "Llavero Corazón Personalizado",
+  "tagline": "El detalle perfecto para San Valentín.",
+  "description": "Un llavero en forma de corazón que puedes personalizar con el nombre que quieras. El detalle perfecto para San Valentín o para sorprender a esa persona especial cualquier día del año.",
+  "price": 5.9,
+  "currency": "EUR",
+  "customizable": true,
+  "bestseller": true,
+  "colors": ["Blanco", "Negro", "Rosa", "Rojo", "Turquesa"],
+  "dimensions": "6 × 6 × 0,3 cm",
+  "material": "PLA",
+  "printTime": "~45 min",
+  "categories": ["regalos", "personalizados", "pareja", "mama", "llaveros", "san-valentin"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}

@@ -1,0 +1,18 @@
+{
+  "id": "mini-busto",
+  "name": "Mini Busto Personalizado",
+  "tagline": "Un busto único… ¡incluso el tuyo o el de tu pareja!",
+  "description": "Mini busto personalizado a partir de una fotografía. Un regalo único y emocionante: inmortaliza a tu pareja, a un familiar o incluso a tu mascota en una pieza impresa en 3D.",
+  "price": 24.9,
+  "currency": "EUR",
+  "customizable": true,
+  "bestseller": false,
+  "colors": ["Blanco", "Gris", "Negro"],
+  "dimensions": "9 × 9 × 12 cm",
+  "material": "PLA",
+  "printTime": "~6 h",
+  "categories": ["personalizados", "regalos", "pareja", "familia", "figuras", "san-valentin", "navidad"],
+  "images": [],
+  "available": true,
+  "seo": {}
+}
