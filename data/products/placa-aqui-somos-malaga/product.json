@@ -1,0 +1,25 @@
+{
+  "id": "placa-aqui-somos-malaga",
+  "name": "Placa decorativa \"AQUI SOMOS DEL MALAGA\"",
+  "tagline": "Placa decorativa Málaga CF",
+  "description": "Placa decorativa del Málaga CF con la frase \"AQUI SOMOS DEL MÁLAGA\"",
+  "price": 8,
+  "currency": "EUR",
+  "customizable": true,
+  "bestseller": false,
+  "colors": [
+    "BLANCO"
+  ],
+  "dimensions": "16X20X2",
+  "material": "PLA",
+  "printTime": "",
+  "categories": [
+    "decoracion",
+    "objetos-decorativos"
+  ],
+  "images": [
+    "data/products/placa-aqui-somos-malaga/images/aqui-somos-del-malaga.jpg"
+  ],
+  "available": true,
+  "seo": {}
+}
