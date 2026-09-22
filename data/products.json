@@ -90,6 +90,35 @@
     "seo": {}
   },
   {
+    "id": "cuchillos-de-terror",
+    "name": "🩸 Cuchillos de terror – Decoración Halloween 🎃",
+    "tagline": "Cuchillos de terror – Decoración Halloween",
+    "description": "Dale un toque terrorífico y divertido a tu casa con esta decoración de Halloween “BOO!”, perfecta para colocar en puertas, paredes o cualquier rincón de casa. 🕷️🦇\n\n📏 Medida: 20 cm",
+    "price": 12,
+    "currency": "EUR",
+    "customizable": false,
+    "bestseller": false,
+    "colors": [],
+    "dimensions": "20",
+    "material": "PLA",
+    "printTime": "",
+    "categories": [
+      "regalos",
+      "decoracion",
+      "personalizados",
+      "mascotas",
+      "san-valentin",
+      "halloween",
+      "navidad"
+    ],
+    "images": [
+      "data/products/cuchillos-de-terror/images/Cuchillos2.jpg",
+      "data/products/cuchillos-de-terror/images/cuchillos1.jpg"
+    ],
+    "available": true,
+    "seo": {}
+  },
+  {
     "id": "dinosaurio-juguete",
     "name": "Figura Dinosaurio",
     "tagline": "Un juguete robusto que aguanta mil aventuras.",
